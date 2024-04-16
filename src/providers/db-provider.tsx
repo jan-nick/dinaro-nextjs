@@ -10,6 +10,7 @@ import {
 import PocketBase, { RecordAuthResponse } from "pocketbase";
 import { User } from "@/types/user";
 import { setCookie, deleteCookie } from "cookies-next";
+import { db as pocketBaseDb } from "@/services/db";
 
 export type Db = {
   db: PocketBase;
@@ -27,7 +28,7 @@ export const DbProvider = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const db = useMemo(() => new PocketBase("http://127.0.0.1:8090"), []);
+  const db = useMemo(() => pocketBaseDb, []);
 
   const [token, setToken] = useState(db.authStore.token);
   const [user, setUser] = useState(db.authStore.model as User);

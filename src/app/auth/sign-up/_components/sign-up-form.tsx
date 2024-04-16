@@ -18,6 +18,7 @@ export function SignUpForm() {
   const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
+  
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
